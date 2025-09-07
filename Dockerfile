@@ -29,7 +29,7 @@ ENV NODE_ENV=production
 
 # только прод-зависимости
 COPY package*.json ./
-RUN npm ci --omit=dev
+RUN npm ci --include=dev
 
 # скопируем сборку
 COPY --from=apibuild /app/dist /app/dist
