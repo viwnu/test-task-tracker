@@ -1,0 +1,9 @@
+<main class="container">
+  <h1>Angular + Nest Monorepo</h1>
+  <p *ngIf="msg(); else loading">{{ msg() }}</p>
+  @if (msg()) {
+    <p>{{ msg() }}</p>
+  } @else {
+    <p>Loading...</p>
+  }
+</main>
