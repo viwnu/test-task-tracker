@@ -9,7 +9,7 @@ services:
     volumes:
       - pg_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      test: ["CMD-SHELL", "pg_isready -U ${PS_USER} -d ${PS_PASSWORD}"]
       interval: 3s
       timeout: 3s
       retries: 20
@@ -22,7 +22,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: ttt-app
-    env_file: .env
+    env_file: .env.api.production
     depends_on:
       db:
         condition: service_healthy
