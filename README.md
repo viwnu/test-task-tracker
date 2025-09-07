@@ -10,6 +10,9 @@ $ npm install
 
 ## DB Setup
 
+first create DB in Postgres with name `test_task_tracker`
+than:
+
 ```bash
 $ npm run db:migrate-prod #or dev
 $ npm run db:seed-prod #or dev
