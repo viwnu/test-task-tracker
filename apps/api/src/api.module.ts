@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'node:path';
 
 import { ApiController } from './api.controller';
 import { ApiService } from './api.service';
@@ -15,6 +17,11 @@ import { TasksModule } from './tasks/tasks.module';
     }),
     TypeOrmModule.forRootAsync(TypeOrmConfigService()),
     TasksModule,
+    ServeStaticModule.forRoot({
+      // мы скопировали фронт в /app/static (см. Dockerfile)
+      rootPath: join(process.cwd(), 'static'),
+      exclude: ['/api*'],
+    }),
   ],
   controllers: [ApiController],
   providers: [ApiService],
