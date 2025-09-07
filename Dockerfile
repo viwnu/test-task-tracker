@@ -1,5 +1,5 @@
 # ---------- Angular build ----------
-FROM johnpapa/angular-cli AS webbuild
+FROM node:20-alpine AS webbuild
 WORKDIR /web
 COPY apps/web/package*.json ./
 RUN npm ci --include=dev
