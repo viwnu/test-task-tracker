@@ -1,7 +1,8 @@
+import { Task } from '@app/contracts';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('tasks')
-export class TaskEntity {
+export class TaskEntity implements Task {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 

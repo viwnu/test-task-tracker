@@ -23,6 +23,12 @@
       ],
       "@app/contracts/*": [
         "libs/contracts/src/*"
+      ],
+      "@app/api-doc": [
+        "libs/shared/api-doc/src"
+      ],
+      "@app/api-doc/*": [
+        "libs/shared/api-doc/src/*"
       ]
     }
   }
