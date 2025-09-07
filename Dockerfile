@@ -2,9 +2,10 @@
 FROM node:20-alpine AS webbuild
 WORKDIR /web
 COPY apps/web/package*.json ./
-RUN npm ci
+RUN npm ci --include=dev
 COPY apps/web/ .
-RUN npm run build
+# RUN npm run build
+RUN npx ng build --configuration production
 
 # ---------- Nest build ----------
 FROM node:20-alpine AS apibuild
