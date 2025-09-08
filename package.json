@@ -28,7 +28,7 @@
     "db:drop-prod": "cross-env NODE_ENV=production npm run typeorm schema:drop",
     "db:seed-dev": "cross-env NODE_ENV=development ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli -d ./apps/api/db/data-source.seed.ts migration:run",
     "db:migrate-prod": "node ./node_modules/typeorm/cli.js -d dist/apps/api/db/data-source.js migration:run",
-    "db:seed-prod":    "node ./node_modules/typeorm/cli.js -d dist/apps/api/db/data-source.seed.js migration:run"
+    "db:seed-prod":    "node ./node_modules/typeorm/cli.js -d dist/apps/api/db/data-source-seed.js migration:run"
     
   },
   "dependencies": {
