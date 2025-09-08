@@ -34,5 +34,7 @@ RUN npm ci --omit=dev
 COPY --from=apibuild /app/dist /app/dist
 COPY --from=apibuild /app/static /app/static
 
+COPY start.sh /app/start.sh
+
 EXPOSE 3000
 CMD ["sh", "./start.sh"]
