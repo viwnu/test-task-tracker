@@ -19,7 +19,7 @@ COPY apps ./apps
 COPY libs ./libs
 
 # копируем собранный фронт в отдельную папку (упростим путь в ServeStatic)
-COPY --from=webbuild /web/dist/browser /app/static
+COPY --from=webbuild /web/dist /app/static
 RUN npm run build api
 RUN ./node_modules/.bin/tsc
 

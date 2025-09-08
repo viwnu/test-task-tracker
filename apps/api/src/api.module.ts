@@ -19,7 +19,7 @@ import { TasksModule } from './tasks/tasks.module';
     TasksModule,
     ServeStaticModule.forRoot({
       // мы скопировали фронт в /app/static (см. Dockerfile)
-      rootPath: join(process.cwd(), 'static'),
+      rootPath: join(process.cwd(), 'static/web/browser'),
       exclude: ['/api*'],
     }),
   ],
