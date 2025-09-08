@@ -4,7 +4,7 @@ WORKDIR /web
 COPY apps/web/package*.json ./
 RUN npm ci --include=dev
 COPY apps/web/ .
-RUN npm run build --configuration production
+RUN npm run build -- -c production
 
 # ---------- Nest build ----------
 FROM node:20-alpine AS apibuild
@@ -26,7 +26,7 @@ ENV NODE_ENV=production
 
 # только прод-зависимости
 COPY package*.json ./
-RUN npm ci --include=dev
+RUN npm ci --omit=dev
 
 # скопируем сборку
 COPY --from=apibuild /app/dist /app/dist
