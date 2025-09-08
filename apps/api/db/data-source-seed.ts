@@ -4,7 +4,7 @@ import { ENTITIES } from './entities';
 import { SEEDS } from './migrations';
 
 dotenv.config({
-  path: `.env.${process.env.NODE_ENV.trim()}`,
+  path: `.env.api.${process.env.NODE_ENV.trim()}`,
 });
 
 const Config: DataSourceOptions = {
