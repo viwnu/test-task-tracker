@@ -4,6 +4,8 @@ WORKDIR /web
 COPY apps/web/package*.json ./
 RUN npm ci --include=dev
 COPY apps/web/ .
+COPY tsconfig*.json /
+COPY libs /libs
 RUN npm run build -- -c production
 
 # ---------- Nest build ----------
