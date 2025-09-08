@@ -31,5 +31,6 @@
         "libs/shared/api-doc/src/*"
       ]
     }
-  }
+  },
+  "include": ["apps/api/db/*"]
 }
