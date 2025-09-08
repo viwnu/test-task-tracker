@@ -12,13 +12,14 @@ RUN npm run build -- -c production
 FROM node:20-alpine AS apibuild
 WORKDIR /app
 COPY package*.json ./
+RUN npm install
 RUN npm ci
 COPY nest-cli.json tsconfig*.json ./
 COPY apps ./apps
 COPY libs ./libs
 
 # копируем собранный фронт в отдельную папку (упростим путь в ServeStatic)
-COPY --from=webbuild /web/dist /app/static
+COPY --from=webbuild /web/dist/browser /app/static
 RUN npm run build api
 RUN ./node_modules/.bin/tsc
 
@@ -29,6 +30,7 @@ ENV NODE_ENV=production
 
 # только прод-зависимости
 COPY package*.json ./
+RUN npm install
 RUN npm ci --omit=dev
 
 # скопируем сборку
