@@ -12,7 +12,6 @@ RUN npm run build -- -c production
 FROM node:20-alpine AS apibuild
 WORKDIR /app
 COPY package*.json ./
-RUN npm install
 RUN npm ci
 COPY nest-cli.json tsconfig*.json ./
 COPY apps ./apps
@@ -30,7 +29,6 @@ ENV NODE_ENV=production
 
 # только прод-зависимости
 COPY package*.json ./
-RUN npm install
 RUN npm ci --omit=dev
 
 # скопируем сборку
