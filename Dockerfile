@@ -3,14 +3,8 @@ FROM node:20-alpine AS webbuild
 WORKDIR /web
 COPY apps/web/package*.json ./
 RUN npm ci --include=dev
-RUN npm install -g @angular/cli
-RUN node -v && npm -v \
-  && ls -la node_modules/@angular/cli/bin \
-  && node -e "console.log('has cli:', !!require.resolve('@angular/cli/package.json'))"
 COPY apps/web/ .
 RUN npm run build --configuration production
-# RUN npx ng build --configuration production
-# RUN ./node_modules/.bin/ng build --configuration production
 
 # ---------- Nest build ----------
 FROM node:20-alpine AS apibuild
